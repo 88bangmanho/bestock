@@ -232,6 +232,31 @@ body.light-mode .country-filter-btn:hover {
 }
 
 /* =====================
+   AdSense Container
+===================== */
+.adsense-container {
+    max-width: 1000px;
+    margin: 40px auto; /* Centered with vertical spacing */
+    padding: 25px; /* Ample padding */
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    box-shadow: 0 0 30px var(--card-shadow);
+    text-align: center;
+    color: var(--subtle-text);
+    font-size: 0.9rem;
+    overflow: hidden; /* Ensure ad content doesn't overflow */
+}
+
+.adsense-placeholder {
+    margin: 0;
+    padding: 20px 0;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* =====================
    Button
 ===================== */
 .action-area {
