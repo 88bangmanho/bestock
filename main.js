@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             targetPrice: "Target Price:",
             noStocks: "No stocks found for selected category.",
             footer: "※ This page is for demonstration purposes only and cannot be used as a basis for actual investment decisions.",
-            themeToggleLight: "☀️", // Sun for dark mode to switch to light
-            themeToggleDark: "🌙", // Moon for light mode to switch to dark
+            themeToggleLight: "Light Mode",
+            themeToggleDark: "Dark Mode",
             marketKOSPI: "South Korean Stock Market (KOSPI)",
             marketKOSDAQ: "South Korean Stock Market (KOSDAQ)",
             marketNASDAQ: "US Stock Market (NASDAQ)",
@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             targetPrice: "目標価格:",
             noStocks: "選択されたカテゴリの株式は見つかりませんでした。",
             footer: "※ このページはデモンストレーション専用であり、実際の投資判断の根拠として使用することはできません。",
-            themeToggleLight: "Light Mode",
-            themeToggleDark: "Dark Mode",
+            themeToggleLight: "ライトモード",
+            themeToggleDark: "ダークモード",
             marketKOSPI: "韓国株式市場 (KOSPI)",
             marketKOSDAQ: "韓国株式市場 (KOSDAQ)",
             marketNASDAQ: "米国株式市場 (NASDAQ)",
