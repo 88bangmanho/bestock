@@ -1,14 +1,229 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cosmic Stock Recommender</title>
+
+<style>
+/* =====================
+   Global
+===================== */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #1e1b4b, #020617 70%);
+    color: #e5e7eb;
+    overflow-x: hidden;
+}
+
+/* =====================
+   Star Background
+===================== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 80% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 80%, #fff, transparent);
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+/* =====================
+   Header
+===================== */
+header {
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+header h1 {
+    font-size: 2.4rem;
+    margin: 0;
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* =====================
+   Button
+===================== */
+.action-area {
+    text-align: center;
+    margin: 40px 0;
+}
+
+button {
+    padding: 16px 42px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #22d3ee, #a78bfa);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(99,102,241,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 45px rgba(167,139,250,0.9);
+}
+
+/* =====================
+   Result Area
+===================== */
+#result {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* =====================
+   Stock Card
+===================== */
+.stock-card {
+    background: linear-gradient(
+        160deg,
+        rgba(30,27,75,0.9),
+        rgba(2,6,23,0.95)
+    );
+    border: 1px solid rgba(148,163,184,0.25);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 0 35px rgba(34,211,238,0.15);
+    animation: fadeUp 0.9s ease forwards;
+}
+
+.market {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    letter-spacing: 0.08em;
+}
+
+.name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 6px;
+    background: linear-gradient(90deg, #f472b6, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.reason {
+    margin-top: 14px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: #cbd5f5;
+}
+
+.target {
+    margin-top: 16px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: #22d3ee;
+}
+
+/* =====================
+   Footer
+===================== */
+footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #64748b;
+    padding-bottom: 40px;
+}
+
+/* =====================
+   Animation
+===================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================
+   Mobile Adjust
+===================== */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.9rem;
+    }
+    button {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+</style>
 </head>
+
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+
+<header>
+    <h1>🌌 COSMIC STOCK SIGNAL</h1>
+</header>
+
+<div class="action-area">
+    <button onclick="recommend()">주식 추천</button>
+</div>
+
+<div id="result"></div>
+
+<footer>
+    ※ 본 페이지는 데모용이며 실제 투자 판단의 근거가 될 수 없습니다.
+</footer>
+
+<script>
+const stocks = [
+    { market: "KOSPI", name: "삼성전자", price: 72000, reason: "반도체 업황 회복 및 글로벌 시장 지배력" },
+    { market: "KOSPI", name: "SK하이닉스", price: 138000, reason: "AI·HBM 메모리 수요 증가에 따른 실적 개선" },
+    { market: "KOSPI", name: "현대차", price: 195000, reason: "전동화·자율주행 기반 글로벌 판매 확대" },
+    { market: "KOSDAQ", name: "에코프로비엠", price: 210000, reason: "2차전지 양극재 글로벌 공급망 확대" },
+    { market: "KOSDAQ", name: "알테오젠", price: 89000, reason: "플랫폼 기술 중심의 대형 기술수출 기대" },
+    { market: "KOSDAQ", name: "셀트리온헬스케어", price: 76000, reason: "바이오시밀러 글로벌 시장 점유율 확대" }
+];
+
+function recommend() {
+    const result = document.getElementById("result");
+    result.innerHTML = "";
+
+    const picked = [...stocks]
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+
+    picked.forEach(stock => {
+        const target = Math.round(stock.price * (1.18 + Math.random() * 0.12));
+        const card = document.createElement("div");
+        card.className = "stock-card";
+        card.innerHTML = `
+            <div class="market">${stock.market}</div>
+            <div class="name">${stock.name}</div>
+            <div class="reason">📌 ${stock.reason}</div>
+            <div class="target">🎯 목표가: ${target.toLocaleString()}원</div>
+        `;
+        result.appendChild(card);
+    });
+}
+</script>
+
 </body>
 </html>
