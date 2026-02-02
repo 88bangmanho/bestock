@@ -1,17 +1,28 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cosmic Stock Recommender</title>
+    <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <header>
-    <h1>Hello, world!</h1>
-    <button id="theme-toggle">Toggle Theme</button>
-  </header>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+
+<header>
+    <h1>🌌 COSMIC STOCK SIGNAL</h1>
+    <button id="theme-toggle">☀️</button>
+</header>
+
+<div class="action-area">
+    <button id="recommend-btn">주식 추천</button>
+</div>
+
+<div id="result"></div>
+
+<footer>
+    ※ 본 페이지는 데모용이며 실제 투자 판단의 근거가 될 수 없습니다.
+</footer>
+
+<script src="/main.js"></script>
 </body>
 </html>

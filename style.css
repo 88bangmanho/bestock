@@ -1,40 +1,200 @@
-/* Define color variables for light and dark themes */
+/* =====================
+   CSS Variables
+===================== */
 :root {
-  --background-color: #ffffff;
-  --text-color: #333333;
+    --bg-gradient: radial-gradient(circle at top, #1e1b4b, #020617 70%);
+    --text-color: #e5e7eb;
+    --card-bg: linear-gradient(160deg, rgba(30,27,75,0.9), rgba(2,6,23,0.95));
+    --card-border: rgba(148,163,184,0.25);
+    --subtle-text: #94a3b8;
+    --card-text: #cbd5f5;
+    --accent-color: #22d3ee;
+    --star-opacity: 0.25;
 }
 
-body.dark-mode {
-  --background-color: #333333;
-  --text-color: #ffffff;
+body.light-mode {
+    --bg-gradient: radial-gradient(circle at top, #f3f4f6, #d1d5db 80%);
+    --text-color: #1f2937;
+    --card-bg: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(229,231,235,0.95));
+    --card-border: rgba(107,114,128,0.25);
+    --subtle-text: #4b5563;
+    --card-text: #374151;
+    --accent-color: #0891b2;
+    --star-opacity: 0;
 }
 
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: sans-serif;
-  transition: background-color 0.3s, color 0.3s;
-  
-  /* Center content for a cleaner look */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
+
+/* =====================
+   Global
+===================== */
+* {
+    box-sizing: border-box;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: "Segoe UI", sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    overflow-x: hidden;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* =====================
+   Star Background
+===================== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 80% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 80%, #fff, transparent);
+    opacity: var(--star-opacity);
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+
+/* =====================
+   Header
+===================== */
 header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 60px 20px 20px;
+}
+
+header h1 {
+    font-size: 2.4rem;
+    margin: 0;
+    background: linear-gradient(90deg, #38bdf8, #a78bfa, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 #theme-toggle {
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  border: 1px solid var(--text-color);
-  background-color: var(--background-color);
-  color: var(--text-color);
-  cursor: pointer;
+    padding: 8px 10px;
+    font-size: 1.2rem;
+    background: rgba(255,255,255,0.1);
+    color: var(--text-color);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* =====================
+   Button
+===================== */
+.action-area {
+    text-align: center;
+    margin: 40px 0;
+}
+
+#recommend-btn { /* Changed from generic button to ID */
+    padding: 16px 42px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #22d3ee, #a78bfa);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 0 25px rgba(99,102,241,0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#recommend-btn:hover { /* Changed from generic button to ID */
+    transform: scale(1.08);
+    box-shadow: 0 0 45px rgba(167,139,250,0.9);
+}
+
+/* =====================
+   Result Area
+===================== */
+#result {
+    max-width: 1000px;
+    margin: 0 auto 80px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+/* =====================
+   Stock Card
+===================== */
+.stock-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 0 35px rgba(34,211,238,0.15);
+    animation: fadeUp 0.9s ease forwards;
+    transition: background 0.5s, border 0.5s;
+}
+
+.market {
+    font-size: 0.75rem;
+    color: var(--subtle-text);
+    letter-spacing: 0.08em;
+}
+
+.name {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 6px;
+    background: linear-gradient(90deg, #f472b6, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.reason {
+    margin-top: 14px;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: var(--card-text);
+}
+
+.target {
+    margin-top: 16px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* =====================
+   Animation
+===================== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================
+   Mobile Adjust
+===================== */
+@media (max-width: 480px) {
+    header {
+        padding: 40px 20px 20px;
+    }
+    header h1 {
+        font-size: 1.9rem;
+    }
+    #recommend-btn { /* Changed from generic button to ID */
+        width: 100%;
+        max-width: 320px;
+    }
 }
