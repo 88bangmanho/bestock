@@ -74,7 +74,18 @@ This project is a framework-less web application developed within the Firebase S
     1.  **Update `blueprint.md`**: Document this plan. (Completed)
     2.  **Modify `style.css`**: Adjust the `grid-template-columns` property for the `#result` container to ensure that a maximum of 3 stock cards are displayed per row, while maintaining responsiveness. (Completed)
     3.  **Modify `index.html`**: Move the `<div class="adsense-container">...</div>` element from its current position to directly after the `<div id="result"></div>` and before the `<footer>` element. (Completed)
-    4.  **No `main.js` changes**: The JavaScript logic for picking stocks remains unchanged, as the request pertains to layout.
-    5.  **Commit and Push**: Stage, commit, and push the changes to GitHub.
+    4.  **No `main.js` changes**: The JavaScript logic for picking stocks remains unchanged, as the request pertains to layout. (Completed)
+    5.  **Commit and Push**: Stage, commit, and push the changes to GitHub. (Completed)
+
+## Plan for Current Change: Optimize Site for Google AdSense Approval
+- **Goal:** To make the website more compliant with Google AdSense policies and improve its chances of approval by focusing on content structure, user experience, and required legal pages.
+- **Steps:**
+    1.  **Update `blueprint.md`**: Document this plan. (Completed)
+    2.  **Create "About Us" page**: Create a new file `about.html` with a placeholder for content. (Completed)
+    3.  **Create "Privacy Policy" page**: Create a new file `privacy.html` with a placeholder for content. (Completed)
+    4.  **Update `index.html`**: Add links to `about.html` and `privacy.html` in the footer. (Completed)
+    5.  **No `main.js` changes**: No JavaScript modifications are required for these structural changes. (Completed)
+    6.  **Review `style.css`**: Ensure the new pages and footer links inherit existing styles well. (Completed)
+    7.  **Commit and Push**: Stage, commit, and push the changes to GitHub.
 
 This `blueprint.md` will be updated iteratively as new features are added or modifications are made to the project.
