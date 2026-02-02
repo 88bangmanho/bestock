@@ -1,24 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Stock data with country information
     const allStocks = [
-        { market: "KOSPI", name: "삼성전자", price: 72000, reason: "반도체 업황 회복 및 글로벌 시장 지배력", country: "KR" },
-        { market: "KOSPI", name: "SK하이닉스", price: 138000, reason: "AI·HBM 메모리 수요 증가에 따른 실적 개선", country: "KR" },
-        { market: "KOSPI", name: "현대차", price: 195000, reason: "전동화·자율주행 기반 글로벌 판매 확대", country: "KR" },
-        { market: "KOSDAQ", name: "에코프로비엠", price: 210000, reason: "2차전지 양극재 글로벌 공급망 확대", country: "KR" },
-        { market: "KOSDAQ", name: "알테오젠", price: 89000, reason: "플랫폼 기술 중심의 대형 기술수출 기대", country: "KR" },
-        { market: "KOSDAQ", name: "셀트리온헬스케어", price: 76000, reason: "바이오시밀러 글로벌 시장 점유율 확대", country: "KR" },
+        { market: "KOSPI", name_ko: "삼성전자", name_en: "Samsung Electronics", name_ja: "サムスン電子", price: 72000, reason_ko: "반도체 업황 회복 및 글로벌 시장 지배력", reason_en: "Recovery in semiconductor industry and global market dominance", reason_ja: "半導体業界の回復とグローバル市場支配力", country: "KR" },
+        { market: "KOSPI", name_ko: "SK하이닉스", name_en: "SK Hynix", name_ja: "SKハイニックス", price: 138000, reason_ko: "AI·HBM 메모리 수요 증가에 따른 실적 개선", reason_en: "Improved performance due to increased demand for AI·HBM memory", reason_ja: "AI·HBMメモリ需要増加による業績改善", country: "KR" },
+        { market: "KOSPI", name_ko: "현대차", name_en: "Hyundai Motor", name_ja: "現代自動車", price: 195000, reason_ko: "전동화·자율주행 기반 글로벌 판매 확대", reason_en: "Expansion of global sales based on electrification and autonomous driving", reason_ja: "電動化・自動運転によるグローバル販売拡大", country: "KR" },
+        { market: "KOSDAQ", name_ko: "에코프로비엠", name_en: "Ecopro BM", name_ja: "エコープロBM", price: 210000, reason_ko: "2차전지 양극재 글로벌 공급망 확대", reason_en: "Expansion of global supply chain for secondary battery cathode materials", reason_ja: "二次電池正極材のグローバルサプライチェーン拡大", country: "KR" },
+        { market: "KOSDAQ", name_ko: "알테오젠", name_en: "Alteogen", name_ja: "アルテオジェン", price: 89000, reason_ko: "플랫폼 기술 중심의 대형 기술수출 기대", reason_en: "Expectation of large-scale technology export centered on platform technology", reason_ja: "プラットフォーム技術中心の大型技術輸出への期待", country: "KR" },
+        { market: "KOSDAQ", name_ko: "셀트리온헬스케어", name_en: "Celltrion Healthcare", name_ja: "セルトリオンヘルスケア", price: 76000, reason_ko: "바이오시밀러 글로벌 시장 점유율 확대", reason_en: "Expansion of biosimilar global market share", reason_ja: "バイオシミラーグローバル市場シェア拡大", country: "KR" },
         // 미국 주식
-        { market: "NASDAQ", name: "Apple", price: 170, reason: "Strong brand loyalty and expanding innovative product ecosystem", country: "US" },
-        { market: "NASDAQ", name: "Microsoft", price: 400, reason: "Growth in cloud services (Azure) and strengthening AI technology leadership", country: "US" },
-        { market: "NYSE", name: "Tesla", price: 180, reason: "Leading electric vehicle market and anticipation of autonomous driving technology advancement", country: "US" },
+        { market: "NASDAQ", name_ko: "Apple", name_en: "Apple", name_ja: "アップル", price: 170, reason_ko: "강력한 브랜드 충성도와 혁신적인 제품 생태계 확장", reason_en: "Strong brand loyalty and expanding innovative product ecosystem", reason_ja: "強力なブランドロイヤルティと革新的な製品エコシステムの拡大", country: "US" },
+        { market: "NASDAQ", name_ko: "Microsoft", name_en: "Microsoft", name_ja: "マイクロソフト", price: 400, reason_ko: "클라우드 서비스(Azure) 성장 및 AI 기술 리더십 강화", reason_en: "Growth in cloud services (Azure) and strengthening AI technology leadership", reason_ja: "クラウドサービス（Azure）の成長とAI技術リーダーシップの強化", country: "US" },
+        { market: "NYSE", name_ko: "Tesla", name_en: "Tesla", name_ja: "テスラ", price: 180, reason_ko: "전기차 시장 선도 및 자율주행 기술 발전 기대", reason_en: "Leading electric vehicle market and anticipation of autonomous driving technology advancement", reason_ja: "電気自動車市場をリードし、自動運転技術の進歩への期待", country: "US" },
+        // Additional US stocks to reach 10
+        { market: "NASDAQ", name_ko: "Amazon", name_en: "Amazon", name_ja: "アマゾン", price: 150, reason_ko: "전자상거래 및 클라우드 컴퓨팅(AWS) 지배력, 신시장 확장", reason_en: "Dominance in e-commerce and cloud computing (AWS), expanding into new markets", reason_ja: "Eコマースとクラウドコンピューティング（AWS）の支配力、新規市場への拡大", country: "US" },
+        { market: "NASDAQ", name_ko: "Google", name_en: "Google", name_ja: "グーグル", price: 140, reason_ko: "검색, 광고 및 AI 혁신 리더십(Alphabet Inc.)", reason_en: "Leadership in search, advertising, and AI innovation (Alphabet Inc.)", reason_ja: "検索、広告、AIイノベーションにおけるリーダーシップ（Alphabet Inc.）", country: "US" },
+        { market: "NYSE", name_ko: "Meta Platforms", name_en: "Meta Platforms", name_ja: "メタ・プラットフォームズ", price: 350, reason_ko: "선도적인 소셜 미디어 플랫폼(Facebook, Instagram) 및 메타버스 투자", reason_en: "Leading social media platforms (Facebook, Instagram) and metaverse investments", reason_ja: "主要なソーシャルメディアプラットフォーム（Facebook、Instagram）とメタバースへの投資", country: "US" },
+        { market: "NASDAQ", name_ko: "NVIDIA", name_en: "NVIDIA", name_ja: "エヌビディア", price: 900, reason_ko: "AI 및 그래픽 처리 장치(GPU) 기술 개척", reason_en: "Pioneering AI and graphics processing unit (GPU) technology", reason_ja: "AIおよびグラフィックス処理ユニット（GPU）技術の開拓", country: "US" },
+        { market: "NYSE", name_ko: "Johnson & Johnson", name_en: "Johnson & Johnson", name_ja: "ジョンソン・エンド・ジョンソン", price: 160, reason_ko: "다각화된 헬스케어 대기업으로 강력한 제약 및 의료기기 부문 보유", reason_en: "Diversified healthcare giant with strong pharmaceutical and medical device segments", reason_ja: "多様なヘルスケア大手で、強力な医薬品および医療機器部門を持つ", country: "US" },
+        { market: "NYSE", name_ko: "Visa", name_en: "Visa", name_ja: "ビザ", price: 270, reason_ko: "현금 없는 경제 트렌드의 혜택을 받는 글로벌 디지털 결제 리더", reason_en: "Global leader in digital payments, benefiting from cashless economy trends", reason_ja: "キャッシュレス経済の恩恵を受けるグローバルデジタル決済リーダー", country: "US" },
+        { market: "NASDAQ", name_ko: "Netflix", name_en: "Netflix", name_ja: "ネットフリックス", price: 600, reason_ko: "강력한 콘텐츠 제작 및 구독자 증가를 보이는 글로벌 스트리밍 엔터테인먼트 리더", reason_en: "Global streaming entertainment leader with strong content production and subscriber growth", reason_ja: "強力なコンテンツ制作と購読者増加を伴うグローバルストリーミングエンターテイメントリーダー", country: "US" },
         // 유럽 주식
-        { market: "EURONEXT", name: "LVMH", price: 800, reason: "Dominance in luxury market and sustained growth in Asian markets", country: "EU" },
-        { market: "EURONEXT", name: "ASML", price: 900, reason: "Monopolistic position in semiconductor equipment market and advanced technology", country: "EU" },
-        { market: "LSE", name: "Nestle", price: 100, reason: "Robust essential consumer goods business and global market diversity", country: "EU" },
+        { market: "EURONEXT", name_ko: "LVMH", name_en: "LVMH", name_ja: "LVMH", price: 800, reason_ko: "럭셔리 시장 지배력 및 아시아 시장의 지속적인 성장", reason_en: "Dominance in luxury market and sustained growth in Asian markets", reason_ja: "ラグジュアリー市場での優位性とアジア市場での持続的な成長", country: "EU" },
+        { market: "EURONEXT", name_ko: "ASML", name_en: "ASML", name_ja: "ASML", price: 900, reason_ko: "반도체 장비 시장의 독점적 지위 및 첨단 기술", reason_en: "Monopolistic position in semiconductor equipment market and advanced technology", reason_ja: "半導体装置市場における独占的地位と先端技術", country: "EU" },
+        { market: "LSE", name_ko: "Nestle", name_en: "Nestle", name_ja: "ネスレ", price: 100, reason_ko: "견고한 필수 소비재 사업 및 글로벌 시장 다양성", reason_en: "Robust essential consumer goods business and global market diversity", reason_ja: "堅調な必須消費財事業とグローバル市場の多様性", country: "EU" },
         // 일본 주식
-        { market: "TSE", name: "トヨタ", price: 2500, reason: "ハイブリッド車および電気自動車への転換戦略加速と安定した財務構造", country: "JP" },
-        { market: "TSE", name: "ソニー", price: 13000, reason: "コンテンツとハードウェアの相乗効果、イメージセンサー市場での競争優位", country: "JP" },
-        { market: "TSE", name: "任天堂", price: 8000, reason: "革新的なゲームコンテンツと強力なIPに基づいたファン層の維持", country: "JP" }
+        { market: "TSE", name_ko: "토요타", name_en: "Toyota", name_ja: "トヨタ", price: 2500, reason_ko: "하이브리드차 및 전기차 전환 전략 가속화와 안정적인 재무 구조", reason_en: "Accelerated shift to hybrid and electric vehicles and stable financial structure", reason_ja: "ハイブリッド車および電気自動車への転換戦略加速と安定した財務構造", country: "JP" },
+        { market: "TSE", name_ko: "소니", name_en: "Sony", name_ja: "ソニー", price: 13000, reason_ko: "콘텐츠와 하드웨어의 시너지 효과, 이미지 센서 시장에서의 경쟁 우위", reason_en: "Synergy between content and hardware, competitive advantage in image sensor market", reason_ja: "コンテンツとハードウェアの相乗効果、イメージセンサー市場での競争優位", country: "JP" },
+        { market: "TSE", name_ko: "닌텐도", name_en: "Nintendo", name_ja: "任天堂", price: 8000, reason_ko: "혁신적인 게임 콘텐츠와 강력한 IP 기반의 팬층 유지", reason_en: "Maintenance of innovative game content and strong IP-based fan base", reason_ja: "革新的なゲームコンテンツと強力なIPに基づいたファン層の維持", country: "JP" }
     ];
 
     const translations = {
@@ -143,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const picked = [...filteredStocks]
             .sort(() => Math.random() - 0.5)
-            .slice(0, 3);
+            .slice(0, 10);
 
         if (picked.length === 0) {
             result.innerHTML = `<p style="text-align: center; color: var(--text-secondary); margin-top: 50px;">${t('noStocks')}</p>`;
@@ -160,17 +168,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.innerHTML = `
                 <div class="market">${localizedMarket}</div>
-                <div class="name">${stock.name}</div>
-                <div class="reason">${stock.reason}</div>
+                <div class="name">${stock['name_' + currentLanguage]}</div>
+                <div class="reason">${stock['reason_' + currentLanguage]}</div>
                 <div class="target">${t('targetPrice')} ${target.toLocaleString()}원</div>
             `;
             result.appendChild(card);
         });
     }
 
-    // Initial language application and recommendation on page load
-    applyTranslations(); // Apply initial translations
-    recommend(currentFilterCountry); // Also calls applyTranslations
+    // Initial language application on page load
+    applyTranslations(); 
 
 
     const recommendBtn = document.getElementById('recommend-btn');
