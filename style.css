@@ -1,55 +1,55 @@
 /* =====================
    CSS Variables
 ===================== */
-:root { /* DARK THEME DEFAULT - More sophisticated dark */
-    --bg-primary: #0A0A0F; /* Deeper, more neutral dark */
-    --bg-secondary: #1C1C22;
-    --text-primary: #E0E0E0; /* Soft white */
+:root { /* DARK THEME DEFAULT - Mature & Luxurious */
+    --bg-primary: #17171F; /* Deep charcoal */
+    --bg-secondary: #252530; /* Slightly lighter charcoal */
+    --text-primary: #E0E0E0; /* Soft off-white */
     --text-secondary: #A0A0A0; /* Muted gray */
-    --accent-color-1: #6B72EE; /* Slightly softer blue-purple */
-    --accent-color-2: #3EEFFC; /* Softer cyan */
+    --accent-color-1: #6A6AFF; /* Deep, slightly desaturated purple-blue */
+    --accent-color-2: #4EE0A6; /* Muted teal-green */
 
-    --primary-heading-gradient: linear-gradient(90deg, #6B72EE, #3EEFFC, #A78BFA); /* Refined gradient */
-    --button-bg-gradient: linear-gradient(135deg, #6B72EE, #3EEFFC);
-    --button-shadow-1: rgba(107, 114, 238, 0.4); /* Softer shadow */
-    --button-shadow-2: rgba(52, 211, 246, 0.6);
+    --primary-heading-gradient: linear-gradient(90deg, #8A8AFF, #6A6AFF, #4EE0A6); /* Softer, richer gradient */
+    --button-bg-gradient: linear-gradient(135deg, #6A6AFF, #4EE0A6); /* Muted button gradient */
+    --button-shadow-1: rgba(106, 106, 255, 0.25); /* Softer, deeper shadow */
+    --button-shadow-2: rgba(78, 224, 166, 0.4); /* Softer, deeper shadow */
 
-    --card-bg: linear-gradient(160deg, #1C1C22, #0A0A0F); /* Card darker background */
-    --card-border: rgba(100, 100, 120, 0.3); /* Softer border */
-    --card-shadow: rgba(0, 0, 0, 0.3); /* Deeper, less colored shadow */
+    --card-bg: linear-gradient(160deg, #252530, #17171F); /* Subtle card gradient */
+    --card-border: rgba(120, 120, 150, 0.2); /* Very subtle border */
+    --card-shadow: rgba(0, 0, 0, 0.4); /* Deeper, diffused shadow */
 
-    --subtle-text: #909090;
-    --card-text: #C0C0C0;
-    --name-gradient: linear-gradient(90deg, #F9A8D4, #3EEFFC); /* Adjusted name gradient */
-    --footer-text: #707070;
-    --theme-toggle-bg: rgba(255,255,255,0.08); /* Slightly less opaque */
-    --star-opacity: 0.3; /* Slightly more visible stars */
-    --header-gap: 20px;
-    --header-padding: 60px 20px 20px;
+    --subtle-text: #858590; /* Even more subtle text */
+    --card-text: #C5C5D0; /* Slightly richer card text */
+    --name-gradient: linear-gradient(90deg, #A88BFA, #4EE0A6); /* Subtler name gradient */
+    --footer-text: #6A6A75; /* Deeper footer text */
+    --theme-toggle-bg: rgba(255,255,255,0.06); /* More subtle toggle bg */
+    --star-opacity: 0.2; /* Slightly less opaque stars */
+    --header-gap: 24px; /* Increased header gap */
+    --header-padding: 70px 20px 30px; /* More generous header padding */
 }
 
-body.light-mode { /* LIGHT THEME - More sophisticated light */
-    --bg-primary: #F0F2F5; /* Soft light gray */
-    --bg-secondary: #FFFFFF;
-    --text-primary: #333333; /* Dark gray for text */
-    --text-secondary: #666666;
-    --accent-color-1: #4F46E5; /* Royal blue */
-    --accent-color-2: #10B981; /* Emerald green */
+body.light-mode { /* LIGHT THEME - Mature & Luxurious */
+    --bg-primary: #F4F4F9; /* Soft, warm light gray */
+    --bg-secondary: #FFFFFF; /* Clean white */
+    --text-primary: #303030; /* Darker, but soft black */
+    --text-secondary: #707070; /* Muted gray */
+    --accent-color-1: #5C6BC0; /* Sophisticated blue */
+    --accent-color-2: #66BB6A; /* Fresh, muted green */
 
-    --primary-heading-gradient: linear-gradient(90deg, #4F46E5, #10B981, #A78BFA); /* New light gradient */
-    --button-bg-gradient: linear-gradient(135deg, #4F46E5, #10B981);
-    --button-shadow-1: rgba(79, 70, 229, 0.2);
-    --button-shadow-2: rgba(16, 185, 129, 0.3);
+    --primary-heading-gradient: linear-gradient(90deg, #5C6BC0, #66BB6A, #9575CD); /* Refined light gradient */
+    --button-bg-gradient: linear-gradient(135deg, #5C6BC0, #66BB6A); /* Muted button gradient */
+    --button-shadow-1: rgba(92, 107, 192, 0.15); /* Softer shadow */
+    --button-shadow-2: rgba(102, 187, 106, 0.25); /* Softer shadow */
 
     --card-bg: #FFFFFF; /* White card background */
-    --card-border: rgba(200, 200, 220, 0.7);
-    --card-shadow: rgba(0, 0, 0, 0.1);
+    --card-border: rgba(220, 220, 230, 0.8); /* Subtle border */
+    --card-shadow: rgba(0, 0, 0, 0.08); /* Very light, diffused shadow */
 
-    --subtle-text: #808080;
+    --subtle-text: #909090;
     --card-text: #555555;
-    --name-gradient: linear-gradient(90deg, #EC4899, #10B981); /* Adjusted name gradient */
+    --name-gradient: linear-gradient(90deg, #AB47BC, #66BB6A); /* Subtler name gradient */
     --footer-text: #A0A0A0;
-    --theme-toggle-bg: rgba(0,0,0,0.05);
+    --theme-toggle-bg: rgba(0,0,0,0.03); /* More subtle toggle bg */
     --star-opacity: 0;
 }
 
@@ -105,27 +105,27 @@ header {
 }
 
 header h1 {
-    font-size: 2.8rem; /* Slightly larger */
+    font-size: 3.2rem; /* More prominent */
     margin: 0;
     background: var(--primary-heading-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: background 0.5s;
-    letter-spacing: -0.03em; /* Modern look */
+    letter-spacing: -0.04em; /* Tighter letter spacing for elegance */
 }
 
 #theme-toggle {
     position: absolute; /* Position in corner */
     top: 20px;
     right: 20px;
-    padding: 10px 12px; /* Adjusted padding */
-    font-size: 1.1rem; /* Adjust font size */
+    padding: 8px 18px; /* Adjusted padding for text */
+    font-size: 0.95rem; /* Adjusted font size for text */
     background: var(--theme-toggle-bg);
     color: var(--text-primary);
     border: 1px solid var(--card-border); /* Use card border for consistency */
-    border-radius: 50%; /* Make it round */
+    border-radius: 10px; /* Rectangular with rounded corners */
     cursor: pointer;
-    line-height: 1;
+    /* Removed line-height: 1; as it's less relevant for text buttons */
     transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2); /* Subtle shadow */
     display: flex;
@@ -240,7 +240,7 @@ body.light-mode .country-filter-btn:hover {
 }
 
 #recommend-btn {
-    padding: 18px 48px; /* Slightly larger button */
+    padding: 20px 55px; /* Larger padding for a premium feel */
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--text-primary); /* Use text-primary for consistency */
@@ -276,9 +276,9 @@ body.light-mode .country-filter-btn:hover {
 .stock-card {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: 20px;
-    padding: 28px; /* Increased padding */
-    box-shadow: 0 0 35px var(--card-shadow);
+    border-radius: 25px; /* Slightly more rounded */
+    padding: 32px; /* More generous padding */
+    box-shadow: 0 0 45px var(--card-shadow); /* Deeper, more diffused shadow */
     animation: fadeUp 0.9s ease forwards;
     transition: background 0.5s, border 0.5s, box-shadow 0.5s, transform 0.3s;
     display: flex;
@@ -288,19 +288,19 @@ body.light-mode .country-filter-btn:hover {
 }
 
 .stock-card:hover {
-    transform: translateY(-8px); /* Subtle lift effect */
-    box-shadow: 0 8px 40px var(--card-shadow); /* More pronounced shadow */
+    transform: translateY(-10px); /* Slightly more pronounced lift effect */
+    box-shadow: 0 10px 50px var(--card-shadow); /* More pronounced shadow */
 }
 
 .market {
-    font-size: 0.9rem; /* Slightly larger */
+    font-size: 0.95rem; /* Slightly larger */
     color: var(--subtle-text);
-    letter-spacing: 0.05em; /* Reduced letter spacing */
+    letter-spacing: 0.06em; /* Slightly increased letter spacing */
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 10px; /* Increased margin */
     text-transform: uppercase; /* Uppercase for market */
     position: relative;
-    padding-left: 25px;
+    padding-left: 30px; /* Increased padding */
 }
 .market::before {
     content: '📈'; /* Icon for market */
@@ -311,23 +311,23 @@ body.light-mode .country-filter-btn:hover {
 }
 
 .name {
-    font-size: 1.6rem; /* Slightly larger */
+    font-size: 1.8rem; /* Larger font size */
     font-weight: 700; /* Bolder */
-    margin-top: 0px; /* Adjusted margin */
+    margin-top: 5px; /* Adjusted margin */
     background: var(--name-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1.2;
+    line-height: 1.25; /* Improved line height */
 }
 
 .reason {
-    margin-top: 18px; /* Adjusted margin */
-    line-height: 1.7; /* Improved line height */
-    font-size: 0.95rem;
+    margin-top: 20px; /* Adjusted margin */
+    line-height: 1.8; /* Improved line height for readability */
+    font-size: 1rem; /* Slightly larger font size */
     color: var(--card-text);
     flex-grow: 1; /* Allow reason to take available space */
     position: relative;
-    padding-left: 25px;
+    padding-left: 30px; /* Increased padding */
 }
 .reason::before {
     content: '💡'; /* Icon for reason */
@@ -338,12 +338,12 @@ body.light-mode .country-filter-btn:hover {
 }
 
 .target {
-    margin-top: 20px; /* Adjusted margin */
-    font-size: 1.15rem; /* Slightly larger */
+    margin-top: 25px; /* Adjusted margin */
+    font-size: 1.25rem; /* Larger font size */
     font-weight: bold;
-    color: var(--accent-color);
+    color: var(--accent-color-1); /* Use accent-color-1 for consistency and sophistication */
     position: relative;
-    padding-left: 25px;
+    padding-left: 30px; /* Increased padding */
 }
 .target::before {
     content: '🎯'; /* Icon for target */

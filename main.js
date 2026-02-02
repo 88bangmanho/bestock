@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
             targetPrice: "目標価格:",
             noStocks: "選択されたカテゴリの株式は見つかりませんでした。",
             footer: "※ このページはデモンストレーション専用であり、実際の投資判断の根拠として使用することはできません。",
-            themeToggleLight: "☀️",
-            themeToggleDark: "🌙",
+            themeToggleLight: "Light Mode",
+            themeToggleDark: "Dark Mode",
             marketKOSPI: "韓国株式市場 (KOSPI)",
             marketKOSDAQ: "韓国株式市場 (KOSDAQ)",
             marketNASDAQ: "米国株式市場 (NASDAQ)",
@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             targetPrice: "목표가:",
             noStocks: "선택된 카테고리에 해당하는 주식이 없습니다.",
             footer: "※ 본 페이지는 데모용이며 실제 투자 판단의 근거가 될 수 없습니다.",
-            themeToggleLight: "☀️", // Sun for dark mode to switch to light
-            themeToggleDark: "🌙", // Moon for light mode to switch to dark (this is inverted from the JS logic, will fix)
+            themeToggleLight: "라이트 모드",
+            themeToggleDark: "다크 모드",
             marketKOSPI: "한국 주식 시장 (KOSPI)",
             marketKOSDAQ: "한국 주식 시장 (KOSDAQ)",
             marketNASDAQ: "미국 주식 시장 (NASDAQ)",
