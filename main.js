@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="market">${stock.market}</div>
                 <div class="name">${stock.name}</div>
-                <div class="reason">📌 ${stock.reason}</div>
-                <div class="target">🎯 목표가: ${target.toLocaleString()}원</div>
+                <div class="reason">${stock.reason}</div>
+                <div class="target">목표가: ${target.toLocaleString()}원</div>
             `;
             result.appendChild(card);
         });

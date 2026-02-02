@@ -1,25 +1,41 @@
 /* =====================
    CSS Variables
 ===================== */
-:root {
+:root { /* DARK THEME DEFAULT */
     --bg-gradient: radial-gradient(circle at top, #1e1b4b, #020617 70%);
     --text-color: #e5e7eb;
+    --primary-heading-gradient: linear-gradient(90deg, #38bdf8, #a78bfa, #22d3ee);
+    --button-bg-gradient: linear-gradient(135deg, #6366f1, #22d3ee, #a78bfa);
+    --button-shadow-1: rgba(99,102,241,0.6);
+    --button-shadow-2: rgba(167,139,250,0.9);
     --card-bg: linear-gradient(160deg, rgba(30,27,75,0.9), rgba(2,6,23,0.95));
     --card-border: rgba(148,163,184,0.25);
+    --card-shadow: rgba(34,211,238,0.15);
     --subtle-text: #94a3b8;
     --card-text: #cbd5f5;
     --accent-color: #22d3ee;
+    --name-gradient: linear-gradient(90deg, #f472b6, #22d3ee);
+    --footer-text: #64748b;
+    --theme-toggle-bg: rgba(255,255,255,0.1);
     --star-opacity: 0.25;
 }
 
 body.light-mode {
     --bg-gradient: radial-gradient(circle at top, #f3f4f6, #d1d5db 80%);
     --text-color: #1f2937;
+    --primary-heading-gradient: linear-gradient(90deg, #1e3a8a, #6366f1, #10b981);
+    --button-bg-gradient: linear-gradient(135deg, #3b82f6, #22d3ee, #8b5cf6);
+    --button-shadow-1: rgba(59,130,246,0.4);
+    --button-shadow-2: rgba(139,92,246,0.6);
     --card-bg: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(229,231,235,0.95));
-    --card-border: rgba(107,114,128,0.25);
-    --subtle-text: #4b5563;
-    --card-text: #374151;
-    --accent-color: #0891b2;
+    --card-border: rgba(203,213,225,0.7);
+    --card-shadow: rgba(14,165,233,0.1);
+    --subtle-text: #6b7280;
+    --card-text: #4b5563;
+    --accent-color: #0d9488;
+    --name-gradient: linear-gradient(90deg, #ef4444, #3b82f6);
+    --footer-text: #9ca3af;
+    --theme-toggle-bg: rgba(0,0,0,0.05);
     --star-opacity: 0;
 }
 
@@ -34,16 +50,17 @@ body.light-mode {
 html, body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
-    font-family: "Segoe UI", sans-serif;
+    min-height: 100vh; /* Changed to 100vh for full viewport height */
+    font-family: 'Noto Sans KR', sans-serif; /* Applied new font */
     background: var(--bg-gradient);
     color: var(--text-color);
     overflow-x: hidden;
     transition: background 0.5s, color 0.5s;
+    line-height: 1.6; /* Improved readability */
 }
 
 /* =====================
-   Star Background
+   Star Background (retained for dark mode)
 ===================== */
 body::before {
     content: "";
@@ -56,6 +73,7 @@ body::before {
     opacity: var(--star-opacity);
     pointer-events: none;
     transition: opacity 0.5s;
+    z-index: -1; /* Ensure stars are behind content */
 }
 
 /* =====================
@@ -63,6 +81,7 @@ body::before {
 ===================== */
 header {
     display: flex;
+    flex-direction: column; /* Changed to column for better stacking on mobile */
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -71,23 +90,35 @@ header {
 }
 
 header h1 {
-    font-size: 2.4rem;
+    font-size: 2.8rem; /* Slightly larger */
     margin: 0;
-    background: linear-gradient(90deg, #38bdf8, #a78bfa, #22d3ee);
+    background: var(--primary-heading-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    transition: background 0.5s;
 }
 
 #theme-toggle {
-    padding: 8px 10px;
-    font-size: 1.2rem;
-    background: rgba(255,255,255,0.1);
+    padding: 10px 20px; /* Larger padding */
+    font-size: 1rem; /* Adjust font size */
+    background: var(--theme-toggle-bg);
     color: var(--text-color);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
+    border: 1px solid var(--card-border); /* Use card border for consistency */
+    border-radius: 25px; /* More rounded */
     cursor: pointer;
     line-height: 1;
+    transition: background 0.3s, color 0.3s, border-color 0.3s;
+    display: flex; /* For better icon/text alignment if I add text */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
+
+#theme-toggle:hover {
+    background: var(--theme-toggle-bg); /* Keep consistent on hover */
+    box-shadow: 0 0 10px var(--card-shadow);
+}
+
 
 /* =====================
    Button
@@ -97,22 +128,22 @@ header h1 {
     margin: 40px 0;
 }
 
-#recommend-btn { /* Changed from generic button to ID */
-    padding: 16px 42px;
-    font-size: 1.1rem;
+#recommend-btn {
+    padding: 18px 48px; /* Slightly larger button */
+    font-size: 1.2rem;
     font-weight: bold;
-    color: #fff;
-    background: linear-gradient(135deg, #6366f1, #22d3ee, #a78bfa);
+    color: #fff; /* White text for contrast on gradient */
+    background: var(--button-bg-gradient);
     border: none;
     border-radius: 999px;
     cursor: pointer;
-    box-shadow: 0 0 25px rgba(99,102,241,0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 25px var(--button-shadow-1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s;
 }
 
-#recommend-btn:hover { /* Changed from generic button to ID */
+#recommend-btn:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 45px rgba(167,139,250,0.9);
+    box-shadow: 0 0 45px var(--button-shadow-2);
 }
 
 /* =====================
@@ -124,7 +155,7 @@ header h1 {
     padding: 0 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
+    gap: 28px; /* Increased gap */
 }
 
 /* =====================
@@ -134,40 +165,77 @@ header h1 {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 0 35px rgba(34,211,238,0.15);
+    padding: 28px; /* Increased padding */
+    box-shadow: 0 0 35px var(--card-shadow);
     animation: fadeUp 0.9s ease forwards;
-    transition: background 0.5s, border 0.5s;
+    transition: background 0.5s, border 0.5s, box-shadow 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out content */
+    cursor: default; /* Not interactive, so default cursor */
+}
+
+.stock-card:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: 0 5px 45px var(--card-shadow); /* More pronounced shadow */
 }
 
 .market {
-    font-size: 0.75rem;
+    font-size: 0.85rem; /* Slightly larger */
     color: var(--subtle-text);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.05em; /* Reduced letter spacing */
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.market::before {
+    content: '📈 '; /* Icon for market */
 }
 
 .name {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-top: 6px;
-    background: linear-gradient(90deg, #f472b6, #22d3ee);
+    font-size: 1.6rem; /* Slightly larger */
+    font-weight: 700; /* Bolder */
+    margin-top: 0px; /* Adjusted margin */
+    background: var(--name-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    line-height: 1.2;
 }
 
 .reason {
-    margin-top: 14px;
-    line-height: 1.6;
+    margin-top: 18px; /* Adjusted margin */
+    line-height: 1.7; /* Improved line height */
     font-size: 0.95rem;
     color: var(--card-text);
+    flex-grow: 1; /* Allow reason to take available space */
+}
+
+.reason::before {
+    content: '💡 '; /* Icon for reason */
 }
 
 .target {
-    margin-top: 16px;
-    font-size: 1.05rem;
+    margin-top: 20px; /* Adjusted margin */
+    font-size: 1.15rem; /* Slightly larger */
     font-weight: bold;
     color: var(--accent-color);
 }
+
+.target::before {
+    content: '🎯 '; /* Icon for target */
+}
+
+/* =====================
+   Footer
+===================== */
+footer {
+    text-align: center;
+    font-size: 0.85rem; /* Slightly larger */
+    color: var(--footer-text);
+    padding-bottom: 40px;
+    margin-top: 40px;
+}
+
 
 /* =====================
    Animation
@@ -188,13 +256,19 @@ header h1 {
 ===================== */
 @media (max-width: 480px) {
     header {
-        padding: 40px 20px 20px;
+        padding: 40px 15px 20px; /* Adjusted padding */
     }
     header h1 {
-        font-size: 1.9rem;
+        font-size: 2.2rem; /* Adjusted font size */
     }
-    #recommend-btn { /* Changed from generic button to ID */
-        width: 100%;
-        max-width: 320px;
+    #recommend-btn {
+        width: 90%; /* Wider on mobile */
+        max-width: none;
+    }
+    #result {
+        padding: 0 15px; /* Adjusted padding */
+    }
+    .stock-card {
+        padding: 20px; /* Adjusted padding */
     }
 }
