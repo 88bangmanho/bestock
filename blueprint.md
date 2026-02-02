@@ -59,4 +59,22 @@ This project is a framework-less web application developed within the Firebase S
         *   Adjusted the styling of `#theme-toggle` (padding, font-size, border-radius) to accommodate text buttons instead of icons, making it more rectangular with rounded corners. (Completed)
     3.  **Test**: Manually verify the theme toggle now displays as text buttons and functions correctly. (Pending - user will test in their environment)
 
+## Plan for Current Change: Integrate Unobtrusive Google AdSense Ad Space
+- **Goal:** To create a dedicated, naturally integrated space within the application for Google AdSense advertisements, ensuring minimal user friction and adherence to the "mature and luxurious" UI.
+- **Steps:**
+    1.  **Update `blueprint.md`**: Document this plan. (Completed)
+    2.  **Modify `index.html`**: Insert a new `div` element as an ad container between the `#country-filters` and the `.action-area`. Include a placeholder comment guiding the user to insert their AdSense code. (Completed)
+    3.  **Modify `style.css`**: Apply custom styling to the new ad container (`.adsense-container`) to ensure visual harmony with the existing theme (background, border, border-radius, padding, margin, responsiveness). (Completed)
+    4.  **No `main.js` changes**: No JavaScript modifications are required for this step beyond the HTML structure. (Completed)
+    5.  **Commit and Push**: Stage, commit, and push the changes to GitHub. (Completed)
+
+## Plan for Current Change: Display 3 Stock Recommendations per Screen and Relocate AdSense to Footer
+- **Goal:** To adjust the layout to display a maximum of 3 stock recommendations per row and move the Google AdSense advertisement container to the bottom of the page, above the footer.
+- **Steps:**
+    1.  **Update `blueprint.md`**: Document this plan. (Completed)
+    2.  **Modify `style.css`**: Adjust the `grid-template-columns` property for the `#result` container to ensure that a maximum of 3 stock cards are displayed per row, while maintaining responsiveness. (Completed)
+    3.  **Modify `index.html`**: Move the `<div class="adsense-container">...</div>` element from its current position to directly after the `<div id="result"></div>` and before the `<footer>` element. (Completed)
+    4.  **No `main.js` changes**: The JavaScript logic for picking stocks remains unchanged, as the request pertains to layout.
+    5.  **Commit and Push**: Stage, commit, and push the changes to GitHub.
+
 This `blueprint.md` will be updated iteratively as new features are added or modifications are made to the project.
