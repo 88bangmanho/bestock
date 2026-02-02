@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
         { market: "KOSDAQ", name: "알테오젠", price: 89000, reason: "플랫폼 기술 중심의 대형 기술수출 기대", country: "KR" },
         { market: "KOSDAQ", name: "셀트리온헬스케어", price: 76000, reason: "바이오시밀러 글로벌 시장 점유율 확대", country: "KR" },
         // 미국 주식
-        { market: "NASDAQ", name: "Apple", price: 170, reason: "강력한 브랜드 충성도와 혁신적인 제품 생태계 확장", country: "US" },
-        { market: "NASDAQ", name: "Microsoft", price: 400, reason: "클라우드 서비스(Azure) 성장과 AI 기술 리더십 강화", country: "US" },
-        { market: "NYSE", name: "Tesla", price: 180, reason: "전기차 시장 선도 및 자율주행 기술 발전 기대", country: "US" },
+        { market: "NASDAQ", name: "Apple", price: 170, reason: "Strong brand loyalty and expanding innovative product ecosystem", country: "US" },
+        { market: "NASDAQ", name: "Microsoft", price: 400, reason: "Growth in cloud services (Azure) and strengthening AI technology leadership", country: "US" },
+        { market: "NYSE", name: "Tesla", price: 180, reason: "Leading electric vehicle market and anticipation of autonomous driving technology advancement", country: "US" },
         // 유럽 주식
-        { market: "EURONEXT", name: "LVMH", price: 800, reason: "명품 시장 지배력과 아시아 시장 성장세 지속", country: "EU" },
-        { market: "EURONEXT", name: "ASML", price: 900, reason: "반도체 장비 시장 독점적 지위 및 첨단 기술력", country: "EU" },
-        { market: "LSE", name: "Nestle", price: 100, reason: "견고한 필수 소비재 사업과 글로벌 시장 다양성", country: "EU" },
+        { market: "EURONEXT", name: "LVMH", price: 800, reason: "Dominance in luxury market and sustained growth in Asian markets", country: "EU" },
+        { market: "EURONEXT", name: "ASML", price: 900, reason: "Monopolistic position in semiconductor equipment market and advanced technology", country: "EU" },
+        { market: "LSE", name: "Nestle", price: 100, reason: "Robust essential consumer goods business and global market diversity", country: "EU" },
         // 일본 주식
-        { market: "TSE", name: "Toyota", price: 2500, reason: "하이브리드 및 전기차 전환 전략 가속화와 안정적인 재무구조", country: "JP" },
-        { market: "TSE", name: "Sony", price: 13000, reason: "콘텐츠-하드웨어 시너지 및 이미지 센서 시장 경쟁 우위", country: "JP" },
-        { market: "TSE", name: "Nintendo", price: 8000, reason: "혁신적인 게임 콘텐츠와 강력한 IP 기반 팬덤 유지", country: "JP" }
+        { market: "TSE", name: "トヨタ", price: 2500, reason: "ハイブリッド車および電気自動車への転換戦略加速と安定した財務構造", country: "JP" },
+        { market: "TSE", name: "ソニー", price: 13000, reason: "コンテンツとハードウェアの相乗効果、イメージセンサー市場での競争優位", country: "JP" },
+        { market: "TSE", name: "任天堂", price: 8000, reason: "革新的なゲームコンテンツと強力なIPに基づいたファン層の維持", country: "JP" }
     ];
 
     const translations = {
