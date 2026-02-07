@@ -88,4 +88,14 @@ This project is a framework-less web application developed within the Firebase S
     6.  **Review `style.css`**: Ensure the new pages and footer links inherit existing styles well. (Completed)
     7.  **Commit and Push**: Stage, commit, and push the changes to GitHub.
 
+## Plan for Current Change: Address Discrepancy in Stock Recommendation Pricing
+- **Goal:** To provide more realistic stock recommendation data by introducing a "previous day price" and displaying it alongside the calculated target price, addressing user feedback about large discrepancies.
+- **Steps:**
+    1.  **Modify `main.js` - Dynamic `previousDayPrice`**: Added a JavaScript snippet that dynamically calculates and adds a `previousDayPrice` property to each stock object in the `allStocks` array. This price is a random value between 95% and 99% of the current `price` to simulate real-world fluctuations. (Completed)
+    2.  **Modify `main.js` - Update Translations**: Added a new translation key `previousDayPriceLabel` to the `en`, `ja`, and `ko` translation objects within the `translations` constant. (Completed)
+    3.  **Modify `main.js` - Display Prices**: Updated the `card.innerHTML` within the `recommend` function to display both the `previousDayPrice` and the `target` price, using the new translation keys and wrapping them in a `price-info` div for styling. (Completed)
+    4.  **Modify `style.css` - Add Styling**: Added CSS styles for `.price-info` and `.previous-day-price` to `style.css` to ensure proper visual presentation of the new price information in the stock cards. These styles were placed near the existing `.target` styles. (Completed)
+    5.  **Update `blueprint.md`**: Document this plan and mark all steps as completed. (Completed)
+
+
 This `blueprint.md` will be updated iteratively as new features are added or modifications are made to the project.

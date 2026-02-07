@@ -291,7 +291,7 @@ body.light-mode .country-filter-btn:hover {
     margin: 0 auto 80px;
     padding: 0 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns on larger screens */
     gap: 28px; /* Increased gap */
 }
 
@@ -362,8 +362,27 @@ body.light-mode .country-filter-btn:hover {
     font-size: 1.1em;
 }
 
+.price-info {
+    margin-top: 25px; /* Adjusted margin to provide spacing */
+}
+
+.previous-day-price {
+    font-size: 0.95rem; /* Slightly smaller for previous day price */
+    color: var(--subtle-text); /* More subtle color */
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px; /* Small space between previous day price and target */
+}
+
+.previous-day-price::before {
+    content: '📊'; /* Icon for previous day price */
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 1.1em;
+}
+
 .target {
-    margin-top: 25px; /* Adjusted margin */
     font-size: 1.25rem; /* Larger font size */
     font-weight: bold;
     color: var(--accent-color-1); /* Use accent-color-1 for consistency and sophistication */
@@ -407,6 +426,12 @@ footer {
 /* =====================
    Mobile Adjust
 ===================== */
+@media (max-width: 768px) { /* Adjust for tablets */
+    #result {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+    }
+}
+
 @media (max-width: 480px) {
     header {
         padding: 40px 15px 20px; /* Adjusted padding */
@@ -419,6 +444,7 @@ footer {
         max-width: none;
     }
     #result {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
         padding: 0 15px; /* Adjusted padding */
     }
     .stock-card {

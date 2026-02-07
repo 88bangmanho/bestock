@@ -29,6 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { market: "TSE", name_ko: "닌텐도", name_en: "Nintendo", name_ja: "任天堂", price: 8000, reason_ko: "혁신적인 게임 콘텐츠와 강력한 IP 기반의 팬층 유지", reason_en: "Maintenance of innovative game content and strong IP-based fan base", reason_ja: "革新的なゲームコンテンツと強力なIPに基づいたファン層の維持", country: "JP" }
     ];
 
+    // Dynamically add previousDayPrice to each stock
+    allStocks.forEach(stock => {
+        const minMultiplier = 0.95;
+        const maxMultiplier = 0.99;
+        const multiplier = minMultiplier + Math.random() * (maxMultiplier - minMultiplier);
+        stock.previousDayPrice = Math.round(stock.price * multiplier);
+    });
+
     const translations = {
         en: {
             title: "Cosmic Stock Signal",
@@ -49,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             marketNYSE: "US Stock Market (NYSE)",
             marketEURONEXT: "European Stock Market (EURONEXT)",
             marketLSE: "European Stock Market (LSE)",
-            marketTSE: "Japanese Stock Market (TSE)"
+            marketTSE: "Japanese Stock Market (TSE)",
+            previousDayPriceLabel: "Previous Day Price:"
         },
         ja: {
             title: "コズミック株式シグナル",
@@ -60,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             europe: "欧州",
             japan: "日本",
             targetPrice: "目標価格:",
+            previousDayPriceLabel: "前日終値:",
             noStocks: "選択されたカテゴリの株式は見つかりませんでした。",
             footer: "※ このページはデモンストレーション専用であり、実際の投資判断の根拠として使用することはできません。",
             themeToggleLight: "ライトモード",
@@ -81,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
             europe: "유럽",
             japan: "일본",
             targetPrice: "목표가:",
+            previousDayPriceLabel: "전일 종가:",
             noStocks: "선택된 카테고리에 해당하는 주식이 없습니다.",
             footer: "※ 본 페이지는 데모용이며 실제 투자 판단의 근거가 될 수 없습니다.",
             themeToggleLight: "라이트 모드",
@@ -151,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const picked = [...filteredStocks]
             .sort(() => Math.random() - 0.5)
-            .slice(0, 10);
+            .slice(0, 3);
 
         if (picked.length === 0) {
             result.innerHTML = `<p style="text-align: center; color: var(--text-secondary); margin-top: 50px;">${t('noStocks')}</p>`;
@@ -170,7 +181,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="market">${localizedMarket}</div>
                 <div class="name">${stock['name_' + currentLanguage]}</div>
                 <div class="reason">${stock['reason_' + currentLanguage]}</div>
-                <div class="target">${t('targetPrice')} ${target.toLocaleString()}원</div>
+                <div class="price-info">
+                    <div class="previous-day-price">${t('previousDayPriceLabel')} ${stock.previousDayPrice.toLocaleString()}원</div>
+                    <div class="target">${t('targetPrice')} ${target.toLocaleString()}원</div>
+                </div>
             `;
             result.appendChild(card);
         });
