@@ -97,5 +97,11 @@ This project is a framework-less web application developed within the Firebase S
     4.  **Modify `style.css` - Add Styling**: Added CSS styles for `.price-info` and `.previous-day-price` to `style.css` to ensure proper visual presentation of the new price information in the stock cards. These styles were placed near the existing `.target` styles. (Completed)
     5.  **Update `blueprint.md`**: Document this plan and mark all steps as completed. (Completed)
 
+## Plan for Current Change: Implement 3 Stock Recommendations Per Click
+- **Goal:** To change the number of recommended stocks displayed from 10 to 3 when the "주식 추천" button is clicked.
+- **Steps:**
+    1.  **Modify `main.js`**: Changed `slice(0, 10)` to `slice(0, 3)` in the `recommend` function. (Completed)
+    2.  **Commit and Push**: The changes were committed and pushed to GitHub, triggering deployment. (Completed)
+
 
 This `blueprint.md` will be updated iteratively as new features are added or modifications are made to the project.
